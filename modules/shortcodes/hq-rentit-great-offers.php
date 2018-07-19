@@ -44,9 +44,7 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
             'h' => esc_html__('Great Rental Offers for You', "rentit"),
             'id' => ''
         ), $atts));
-
         ob_start();
-
         ?>
         <section class="page-section">
             <div class="container">
@@ -92,7 +90,6 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                         <!-- tab 1 -->
                         <div class="sladersss tab-pane fade  <?php echo esc_attr($class); ?>"
                              id="tab-<?php echo esc_attr((int)$i); ?>">
-
                             <div class="swiper swiper--<?php echo esc_attr(str_ireplace(' ', '-', $cat->name)); ?>">
                                 <div class="swiper-container-GREAT-RENTAL swiper-container">
 
@@ -101,7 +98,7 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                         <?php
                                         $rentit_new_arr = array(
                                             'paged' => 1,
-                                            'showposts' => 5,
+                                                'showposts' => 3,
                                             'post_status' => 'publish',
                                             'post_type' => 'product',
                                             'orderby' => 'date'
@@ -119,6 +116,7 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                         $rentit_custom_query = new WP_Query($rentit_new_arr);
                                         $j = 1;
                                         if ($rentit_custom_query->have_posts()):
+
                                             while ($rentit_custom_query->have_posts()):
                                                 $rentit_custom_query->the_post();
                                                 $class = ($j == 1) ? ' active' : "";
@@ -136,11 +134,8 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                                                  * @hooked woocommerce_template_loop_product_thumbnail - 10
                                                                  */
                                                                 ?>
-                                                                <img
-                                                                        src="<?php $Rent_IT_class->get_post_thumbnail($post->ID, 370, 230); ?>"
-                                                                        alt="">
-                                                                <span class="icon-view"><strong><i
-                                                                                class="fa fa-eye"></i></strong></span>
+                                                                <img src="<?php $Rent_IT_class->get_post_thumbnail($post->ID, 370, 230); ?>" alt="">
+                                                                <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
                                                             </a>
                                                         </div>
                                                         <div class="caption text-center">
@@ -148,30 +143,28 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                                                         href="<?php echo esc_url(get_the_permalink()); ?>"><?php the_title(); ?></a>
                                                             </h4>
                                                             <div class="caption-text">
-                                                                <?php echo wp_kses_post($Rent_IT_class->get_price_with_text()); ?>
+                                                                <?php
+                                                                    $woo_product = wc_get_product( get_the_ID() );
+                                                                    $vehicle_class = caag_hq_get_vehicle_classes_for_display_by_caag_id( get_post_meta( get_the_ID(), CAAG_HQ_RENTAL_VEHICLE_CLASS_CAAG_ID_ON_WOOCOMMERCE_PRODUCT_META, true ) );
+                                                                    $features = caag_hq_get_features_for_display( $vehicle_class->id );
+                                                                ?>
+                                                                <?php echo get_woocommerce_currency_symbol() ; ?> <?php echo $woo_product->get_price() . ' / per day';  ?>
                                                             </div>
                                                             <div class="buttons">
                                                                 <a class="btn btn-theme ripple-effect"
                                                                    href="<?php echo esc_url(get_the_permalink()) ?>">
-                                                                    <?php echo wp_kses_post(apply_filters('rentit_rentit_text', esc_html__('Rent It', 'rentit'))); ?>
+                                                                    <?php echo wp_kses_post(apply_filters('rentit_rentit_text', esc_html__('Reserve', 'rentit'))); ?>
                                                                 </a>
                                                             </div>
                                                             <table class="table">
-                                                                <?php
-                                                                $post_id = get_the_ID(); ?>
+                                                                <?php $features = array_slice( $features, 0, 3 ); ?>
                                                                 <tr>
-                                                                    <td>
-                                                                        <i class="fa fa-car"></i> <?php echo wp_kses_post(get_post_meta($post_id, '_rental_car_year', true) ? get_post_meta($post_id, '_rental_car_year', true) : "2015"); ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="fa fa-dashboard"></i> <?php echo wp_kses_post(get_post_meta($post_id, '_rental_car_engine', true) ? get_post_meta($post_id, '_rental_car_engine', true) : esc_html__("Diesel", "rentit")); ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="fa fa-cog"></i> <?php echo wp_kses_post(get_post_meta($post_id, '_rental_car_transmission', true) ? get_post_meta($post_id, '_rental_car_transmission', true) : esc_html__("Auto", "rentit")); ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="fa fa-road"></i> <?php echo wp_kses_post(get_post_meta($post_id, '_rental_car_mileage', true) ? get_post_meta($post_id, '_rental_car_mileage', true) : "25000"); ?>
-                                                                    </td>
+                                                                    <?php foreach ($features as $feature): ?>
+                                                                        <td>
+                                                                            <i class="fa fa-<?php echo $feature->icon; ?>"></i>
+                                                                            <?php echo $feature->label; ?>
+                                                                        </td>
+                                                                    <?php endforeach; ?>
                                                                 </tr>
                                                             </table>
                                                         </div>
