@@ -12,5 +12,14 @@
  * Requiring Files
  */
 
+/*
+ *  ShortcodePlugin
+ */
+require_once(ABSPATH . 'wp-content/plugins/js_composer/js_composer.php');
+
+
+/*
+ * Others Files
+ */
 require_once('modules/activation/init.php');
 require_once('modules/shortcodes/init.php');
