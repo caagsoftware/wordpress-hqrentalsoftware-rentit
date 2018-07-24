@@ -97,14 +97,16 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                         <!-- Slides -->
                                         <?php
                                         $rentit_new_arr = array(
-                                            'paged' => 1,
-                                                'showposts' => 3,
-                                            'post_status' => 'publish',
-                                            'post_type' => 'product',
-                                            'orderby' => 'date'
+                                            'paged'         => 1,
+                                            'showposts'     => 10,
+                                            'post_status'   => 'publish',
+                                            'post_type'     => 'product',
+                                            'orderby'       => 'meta_value_num',
+                                            'meta_key'      =>  '_price',
+                                            'order'         =>  'ASC'
                                         );
 
-
+                                        /*
                                         $rentit_new_arr['tax_query'] =
                                             array(
                                                 array(
@@ -112,7 +114,7 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                                     'field' => 'id',
                                                     'terms' => array(sanitize_text_field($cat->term_id))
                                                 )
-                                            );
+                                            );*/
                                         $rentit_custom_query = new WP_Query($rentit_new_arr);
                                         $j = 1;
                                         if ($rentit_custom_query->have_posts()):
@@ -146,7 +148,7 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                                                 <?php
                                                                     $woo_product = wc_get_product( get_the_ID() );
                                                                     $vehicle_class = caag_hq_get_vehicle_classes_for_display_by_caag_id( get_post_meta( get_the_ID(), CAAG_HQ_RENTAL_VEHICLE_CLASS_CAAG_ID_ON_WOOCOMMERCE_PRODUCT_META, true ) );
-                                                                    $features = caag_hq_get_features_for_display( $vehicle_class->id );
+                                                                    $features = caag_hq_get_features_for_display_by_caag_id( $vehicle_class->id );
                                                                 ?>
                                                                 <?php echo get_woocommerce_currency_symbol() ; ?> <?php echo $woo_product->get_price() . ' / per day';  ?>
                                                             </div>

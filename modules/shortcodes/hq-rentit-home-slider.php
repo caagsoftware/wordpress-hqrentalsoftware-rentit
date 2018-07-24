@@ -7,24 +7,24 @@ vc_map(array(
     'params' => array(
         array(
             'type' => 'textfield',
-            'heading' => esc_html__('Enter the Silder Title', 'motors'),
+            'heading' => esc_html__('Enter the Slider Title', 'motors'),
             'param_name' => 'title',
             'value' => '',
-            'description' => esc_html__('Enter the Silder Title', 'motors')
+            'description' => esc_html__('Enter the Slider Title', 'motors')
         ),
         array(
             'type' => 'textfield',
-            'heading' => esc_html__('Enter the Silder Subtitle', 'motors'),
+            'heading' => esc_html__('Enter the Slider Subtitle', 'motors'),
             'param_name' => 'subtitle',
             'value' => '',
-            'description' => esc_html__('Enter the Silder Subtitle', 'motors')
+            'description' => esc_html__('Enter the Slider Subtitle', 'motors')
         ),
         array(
             'type' => 'textfield',
             'heading' => esc_html__('Form Title', 'motors'),
             'param_name' => 'form_title',
             'value' => '',
-            'description' => esc_html__('Enter the Silder Title', 'motors')
+            'description' => esc_html__('Enter the Form Title', 'motors')
         ),
         array(
             'type' => 'textfield',
@@ -52,7 +52,7 @@ vc_map(array(
             'heading' => esc_html__('Form Link', 'motors'),
             'param_name' => 'action',
             'value' => '',
-            'description' => esc_html__('Submit Button Text', 'motors')
+            'description' => esc_html__('Enter Reservation Page Url', 'motors')
         ),
         array(
             'type' => 'textfield',
@@ -60,20 +60,149 @@ vc_map(array(
             'param_name' => 'video',
             'value' => '',
             'description' => esc_html__('Youtube Video URL', 'motors')
-        )
+        ),
+        array(
+            'type' => 'checkbox',
+            'heading' => esc_html__('Enable Email', 'motors'),
+            'param_name' => 'enable_email',
+            'value' => '',
+            'description' => esc_html__('Enable Email Field on Form', 'motors')
+        ),
+        array(
+            'type' => 'checkbox',
+            'heading' => esc_html__('Enable Number of Passegers', 'motors'),
+            'param_name' => 'enable_passenger',
+            'value' => '',
+            'description' => esc_html__('Enable Number of Passegers', 'motors')
+        ),
+        ////////////
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Pick up Location Label', 'motors'),
+            'param_name' => 'pick_up_location_label',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Pick up Location Placeholder', 'motors'),
+            'param_name' => 'pick_up_location_placeholder',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Return Location Label', 'motors'),
+            'param_name' => 'return_location_label',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Return Location Placeholder', 'motors'),
+            'param_name' => 'return_location_placeholder',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Pick up Date Label', 'motors'),
+            'param_name' => 'pick_up_date_label',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Pick up Date Placeholder', 'motors'),
+            'param_name' => 'pick_up_date_placeholder',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Return Date Label', 'motors'),
+            'param_name' => 'return_date_label',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Return Date Placeholder', 'motors'),
+            'param_name' => 'return_date_placeholder',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Pick up Time Label', 'motors'),
+            'param_name' => 'pick_up_time_label',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Pick up Time Placeholder', 'motors'),
+            'param_name' => 'pick_up_time_placeholder',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Return Time Label', 'motors'),
+            'param_name' => 'return_time_label',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Return Time Placeholder', 'motors'),
+            'param_name' => 'return_time_placeholder',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Passenger Label', 'motors'),
+            'param_name' => 'passenger_label',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Passenger Placeholder', 'motors'),
+            'param_name' => 'passenger_placeholder',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Email Label', 'motors'),
+            'param_name' => 'email_label',
+            'value' => ''
+        ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Email Placeholder', 'motors'),
+            'param_name' => 'email_placeholder',
+            'value' => ''
+        ),
     )
 ));
 class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
     protected function content( $atts, $content = null ){
         global $Rent_IT_class;
         extract(shortcode_atts(array(
-            'title'         => esc_html__( 'All Discounts Just For You', 'rentit' ),
-            'subtitle'      => esc_html__( 'Find Best Rental Car', 'rentit' ),
-            'form_title'    => esc_html__( 'Search for Cheap Rental Cars Wherever Your Are', 'rentit' ),
-            'img_src'       => '',
-            'button_text'   => esc_html__( ' Find Car', 'rentit' ),
-            'video'         => '',
-            'action'        =>  ''
+            'title'                         => esc_html__( 'All Discounts Just For You', 'rentit' ),
+            'subtitle'                      => esc_html__( 'Find Best Rental Car', 'rentit' ),
+            'form_title'                    => esc_html__( 'Search for Cheap Rental Cars Wherever Your Are', 'rentit' ),
+            'img_src'                       => '',
+            'button_text'                   => esc_html__( ' Find Car', 'rentit' ),
+            'video'                         => '',
+            'action'                        =>  '',
+            'enable_email'                  =>  false,
+            'pick_up_location_label'        =>  '',
+            'pick_up_location_placeholder'  =>  '',
+            'return_location_label'         =>  '',
+            'return_location_placeholder'   =>  '',
+            'pick_up_date_label'        =>  '',
+            'pick_up_date_placeholder'  =>  '',
+            'return_date_label'         =>  '',
+            'return_date_placeholder'   =>  '',
+            'pick_up_time_label'        =>  '',
+            'pick_up_time_placeholder'  =>  '',
+            'return_time_label'         =>  '',
+            'return_time_placeholder'   =>  '',
+            'passenger_label'           =>  '',
+            'passenger_placeholder'     =>  '',
+            'email_label'               =>  '',
+            'email_placeholder'         =>  '',
+            'enable_passenger'          =>  false
         ), $atts));
         if ( empty( $img_src ) ) {
             $img_src = get_template_directory_uri() . '/img/preview/slider/slide-2.jpg';
@@ -82,7 +211,7 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
             $img = $img[0];
         }
         ob_start();
-        $locations = caag_hq_get_locations_for_display();
+        $locations = caag_hq_get_active_locations_for_display();
         ?>
         <!--Begin-->
         <div class="item slide1 ver1" style="background-image: url('<?php echo esc_url( $img ); ?>');">
@@ -109,13 +238,13 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
                                                 </div>
                                                 <div class="row row-inputs">
                                                     <div class="container-fluid">
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-4">
                                                             <div class="form-group has-icon has-label">
                                                                 <label for="formSearchUpLocation">
-                                                                    <?php esc_html_e( 'Picking Up Location', 'rentit' ); ?>
+                                                                    <?php esc_html_e( $pick_up_location_label, 'rentit' ); ?>
                                                                 </label>
                                                                 <select name="pick_up_location" id="hq-pick-up-location" class="hq-locations-selects">
-                                                                    <option>Select Location</option>
+                                                                    <option><?php echo $pick_up_location_placeholder; ?></option>
                                                                 <?php foreach ($locations as $location): ?>
                                                                     <option value="<?php echo $location->id; ?>"><?php echo $location->name; ?></option>
                                                                 <?php endforeach; ?>
@@ -123,33 +252,37 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
                                                                 <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-4">
                                                             <div class="form-group has-icon has-label">
                                                                 <label for="formSearchUpDate">
-                                                                    <?php esc_html_e( ' Picking Up Date', 'rentit' ); ?>
+                                                                    <?php esc_html_e( $pick_up_date_label, 'rentit' ); ?>
                                                                 </label>
-                                                                <input name="pick_up_date" type="text" class="form-control"
-                                                                       id="formSearchUpDate"
-                                                                       value="<?php
-                                                                       if ( function_exists( 'rentit_get_date_s' ) ) {
-                                                                           rentit_get_date_s( 'dropin_date' );
-                                                                       }
-                                                                       ?>"
-                                                                       placeholder="<?php esc_html_e( 'dd/mm/yyyy', 'rentit' ); ?>">
+                                                                <input name="pick_up_date" type="text" autocomplete="off" class="form-control" id="hq-pick-up-date" placeholder="<?php esc_html_e( $pick_up_date_placeholder, 'rentit' ); ?>">
                                                                 <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group has-icon has-label">
+                                                                <label for="formSearchUpDate">
+                                                                    <?php esc_html_e( $pick_up_time_label, 'rentit' ); ?>
+                                                                </label>
+                                                                <select name="pick_up_time" class="hq-locations-selects">
+                                                                    <?php echo caag_hq_rental_get_times('07:00', '20:00'); ?>
+                                                                </select>
+                                                                <span class="form-control-icon"><i class="fa fa-clock-o" style="margin-right:8px;"></i></span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row row-inputs">
                                                     <div class="container-fluid">
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-4">
                                                             <div class="form-group has-icon has-label">
                                                                 <label for="formSearchUpLocation">
-                                                                    <?php esc_html_e( 'Dropping Off Location', 'rentit' ); ?>
+                                                                    <?php esc_html_e( $return_location_label, 'rentit' ); ?>
                                                                 </label>
                                                                 <select name="return_location" id="hq-return-location" class="hq-locations-selects">
-                                                                    <option>Select Location</option>
+                                                                    <option><?php echo $return_location_placeholder; ?></option>
                                                                     <?php foreach ($locations as $location): ?>
                                                                         <option value="<?php echo $location->id; ?>"><?php echo $location->name; ?></option>
                                                                     <?php endforeach; ?>
@@ -157,53 +290,66 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
                                                                 <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-4">
                                                             <div class="form-group has-icon has-label">
                                                                 <label for="formSearchOffDate">
-                                                                    <?php esc_html_e( 'Dropping Off Date', 'rentit' ); ?>
+                                                                    <?php esc_html_e( $return_date_label, 'rentit' ); ?>
                                                                 </label>
-                                                                <input name="return_date" type="text" class="form-control"
-                                                                       id="formSearchOffDate"
-                                                                       value="<?php
-                                                                       if ( function_exists( 'rentit_get_date_s' ) ) {
-                                                                           rentit_get_date_s( 'dropoff_date' );
-                                                                       }
-                                                                       ?>"
-                                                                       placeholder="<?php esc_html_e( 'dd/mm/yyyy', 'rentit' ); ?>">
+                                                                <input name="return_date" type="text" autocomplete="off" class="form-control" id="hq-return-date" placeholder="<?php esc_html_e( $return_date_placeholder, 'rentit' ); ?>">
                                                                 <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-4">
                                                             <div class="form-group has-icon has-label">
-                                                                <label for="formSearchUpLocation">
-                                                                    <?php esc_html_e( 'Number of Passenger', 'rentit' ); ?>
+                                                                <label for="formSearchOffDate">
+                                                                    <?php esc_html_e( $return_time_label, 'rentit' ); ?>
                                                                 </label>
-                                                                <select name="number_of_passenger" class="hq-locations-selects">
-                                                                    <option>Select Number of Passenger</option>
-                                                                    <?php for($i = 1; $i<=10; $i++): ?>
-                                                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                                    <?php endfor; ?>
+                                                                <select name="return_time" class="hq-locations-selects">
+                                                                    <?php echo caag_hq_rental_get_times('07:00', '20:00'); ?>
                                                                 </select>
-                                                                <span class="form-control-icon"><i class="fa fa-users"></i></span>
+                                                                <span class="form-control-icon"><i class="fa fa-clock-o" style="margin-right:8px;"></i></span>
                                                             </div>
                                                         </div>
-
+                                                    </div>
+                                                </div>
+                                                <div class="row row-inputs">
+                                                    <div class="container-fluid">
+                                                        <?php if( !empty($enable_passenger) ): ?>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group has-icon has-label">
+                                                                    <label for="formSearchUpLocation">
+                                                                        <?php esc_html_e( $passenger_label , 'rentit' ); ?>
+                                                                    </label>
+                                                                    <select name="passengers_number" class="hq-locations-selects">
+                                                                        <option><?php echo $passenger_placeholder; ?></option>
+                                                                        <option>2</option>
+                                                                        <option>4</option>
+                                                                        <option>6</option>
+                                                                        <?php //for($i = 1; $i<=10; $i++): ?>
+                                                                            <?php ///echo $i; ?>"><?php //echo $i; ?>
+                                                                        <?php //endfor; ?>
+                                                                    </select>
+                                                                    <span class="form-control-icon"><i class="fa fa-users" style="margin-right:8px;"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                        <?php if( !empty($enable_email) ): ?>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group has-icon has-label">
+                                                                    <label for="formSearchUpLocation">
+                                                                        <?php esc_html_e( 'Email', 'rentit' ); ?>
+                                                                    </label>
+                                                                    <input type="text" name="email" autocomplete="off" placeholder="<?php esc_html_e( 'Email', 'rentit' ); ?>" class="hq-text-inputs">
+                                                                    <span class="form-control-icon"><i class="fa fa-envelope" style="margin-right:8px;"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
 
-
-                                                <div class="row row-submit">
+                                                <div class="row row-submit hq-row-submit">
                                                     <div class="container-fluid">
                                                         <div class="inner">
-                                                            <i class="fa fa-plus-circle"></i>
-                                                            <a href="<?php
-                                                            if ( function_exists( 'wc_get_page_id' ) ) {
-                                                                echo esc_url( get_permalink( wc_get_page_id( ( 'shop' ) ) ) );
-                                                            }
-
-                                                            ?>">
-                                                                <?php esc_html_e( ' Advanced Search', 'rentit' ); ?>
-                                                            </a>
                                                             <button type="submit" id="formSearchSubmit" class="btn btn-submit btn-theme pull-right">
                                                                 <?php echo $button_text; ?>
                                                             </button>
@@ -259,6 +405,18 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
             }
             #hq-home-form{
                 margin-top: 70px;
+                margin-bottom: 70px;
+            }
+            .hq-text-inputs {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0);
+                color: rgba(255, 255, 255, 0.6);
+                padding-right: 40px;
+                height: 40px;
+            }
+            .hq-row-submit{
+                padding-bottom: 30px;
             }
         </style>
         <!-- /Slide 1 -->
