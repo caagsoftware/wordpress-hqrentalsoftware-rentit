@@ -21,6 +21,8 @@
         timepicker: false,
         minDate: 0
     };
+    $("#hq-pick-up-date").datetimepicker(datesConfigs);
+    $("#hq-return-date").datetimepicker(datesConfigs);
     $("#pick_up_datetime").datetimepicker(datetimeConfigs);
     $("#return_datetime").datetimepicker(datetimeConfigs);
 

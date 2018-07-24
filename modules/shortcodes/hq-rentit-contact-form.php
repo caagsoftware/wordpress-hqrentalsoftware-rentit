@@ -1,12 +1,10 @@
 <?php
 
 vc_map( array(
-    'name'          => esc_html__( 'Rent It contact form 2', 'rentit' ),
-    'base'          => 'rentit_contact_form2',
-    "icon"          => get_template_directory_uri() . "/img/rentit.png", // Simply pass url to your icon here
-    'category'      => esc_html__( 'Rent It', 'rentit' ),
+    'name'          => esc_html__( 'HQ Contact Form', 'rentit' ),
+    'base'          => 'hq_rentit_contact_form',
+    "icon"          => HQ_MOTORS_VC_SHORTCODES_ICON, // Simply pass url to your icon here
     'description'   => esc_html__( 'Contact form', 'rentit' ),
-    'custom_markup' => '{{title}}<div class="vc_btn3-container"><h4 class="team-name"></h4></div>',
     'params'        => array(
         array(
             'type'       => 'textfield',
@@ -60,11 +58,95 @@ vc_map( array(
 
             ),
         ),
+        /////////////
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Field Id Name', 'rentit' ),
+            'param_name' => 'name_id',
+            'description' =>    'HQ Field Identification'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Field Id Email', 'rentit' ),
+            'param_name' => 'email_id',
+            'description' =>    'HQ Field Identification'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Field Id Subject', 'rentit' ),
+            'param_name' => 'subject_id',
+            'description' =>    'HQ Field Identification'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Field Id Message', 'rentit' ),
+            'param_name' => 'message_id',
+            'description' =>    'HQ Field Identification'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Name Label', 'rentit' ),
+            'param_name' => 'name_label',
+            'description' =>    'Name Field Label'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Email Label', 'rentit' ),
+            'param_name' => 'email_label',
+            'description' =>    'Email Field Label'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Subject Label', 'rentit' ),
+            'param_name' => 'subject_label',
+            'description' =>    'Subject Field Label'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Message Label', 'rentit' ),
+            'param_name' => 'message_label',
+            'description' =>    'Message Field Label'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Name Placeholder', 'rentit' ),
+            'param_name' => 'name_placeholder',
+            'description' =>    'Name Field Placeholder'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Email Placeholder', 'rentit' ),
+            'param_name' => 'email_placeholder',
+            'description' =>    'Email Field Placeholder'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Subject Placeholder', 'rentit' ),
+            'param_name' => 'subject_placeholder',
+            'description' =>    'Subject Field Placeholder'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Message Placeholder', 'rentit' ),
+            'param_name' => 'message_placeholder',
+            'description' =>    'Message Field Placeholder'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Button Text', 'rentit' ),
+            'param_name' => 'button_text',
+            'description' =>    'Submit Button Text'
+        ),
+        array(
+            'type'       => 'textfield',
+            'heading'    => esc_html__( 'Action Link', 'rentit' ),
+            'param_name' => 'action',
+            'description' =>    'HQ Link Form'
+        ),
     ),
 ) );
 
 class WPBakeryShortCode_hq_rentit_contact_form extends WPBakeryShortCode {
-
     /**
      * Load specific template
      * @package Rent It
@@ -77,14 +159,27 @@ class WPBakeryShortCode_hq_rentit_contact_form extends WPBakeryShortCode {
     }
 
     protected function content( $atts, $content = null ) {
-
         ob_start();
         $atts    = shortcode_atts(
             array(
                 'show_subject' => true, // get_template_directory_uri().'/img/preview/team/team-270x270x1.jpg',
                 'css'          => '',
                 'items'        => '',
-                'icon'         => ''
+                'icon'         => '',
+                'name_id'      =>   '',
+                'email_id'      =>  '',
+                'subject_id'    =>  '',
+                'message_id'    =>  '',
+                'name_label'      =>   '',
+                'email_label'      =>  '',
+                'subject_label'    =>  '',
+                'message_label'    =>  '',
+                'name_placeholder'      =>   '',
+                'email_placeholder'      =>  '',
+                'subject_placeholder'    =>  '',
+                'message_placeholder'    =>  '',
+                'button_text'           =>  '',
+                'action'                =>  ''
             ), $atts
         );
         $items_v = array();
@@ -104,19 +199,18 @@ class WPBakeryShortCode_hq_rentit_contact_form extends WPBakeryShortCode {
             <div class="col-md-6">
                 <!-- Contact form -->
                 <!-- Contact form -->
-                <form name="contact-form" method="post" action="#" class="contact-form" id="contact-form">
+                <form name="contact-form" method="post" action="<?php echo $action; ?>" class="contact-form">
 
                     <div class="row">
                         <div class="col-md-6">
-
                             <div class="outer required">
                                 <div class="form-group af-inner has-icon">
-                                    <label class="sr-only" for="name"><?php esc_html_e( 'Name', 'rentit' ); ?></label>
+                                    <label class="sr-only" for="name"><?php echo $name_label ?></label>
                                     <input
-                                        type="text" name="name" id="name"
-                                        placeholder="<?php esc_html_e( 'Name', 'rentit' ); ?>" value="" size="30"
+                                        type="text" name="<?php echo $name_id; ?>" id="name"
+                                        placeholder="<?php echo $name_placeholder; ?>" value="" size="30"
                                         data-toggle="tooltip"
-                                        title="<?php esc_html_e( 'Name is required', 'rentit' ); ?>"
+                                        title="<?php echo $name_placeholder; ?>"
                                         class="form-control placeholder"/>
                                     <span class="form-control-icon"><i class="fa fa-user"></i></span>
                                 </div>
@@ -124,15 +218,14 @@ class WPBakeryShortCode_hq_rentit_contact_form extends WPBakeryShortCode {
 
                         </div>
                         <div class="col-md-6">
-
                             <div class="outer required">
                                 <div class="form-group af-inner has-icon">
-                                    <label class="sr-only" for="email"><?php esc_html_e( 'Email', 'rentit' ); ?></label>
+                                    <label class="sr-only" for="email"><?php $email_label; ?></label>
                                     <input
-                                        type="text" name="email" id="email"
-                                        placeholder="<?php esc_html_e( 'Email', 'rentit' ); ?>" value="" size="30"
+                                        type="text" name="<?php echo $email_id?>" id="email"
+                                        placeholder="<?php echo $email_placeholder; ?>" value="" size="30"
                                         data-toggle="tooltip"
-                                        title="<?php esc_html_e( 'Email is required', 'rentit' ); ?>"
+                                        title="<?php echo $email_placeholder; ?>"
                                         class="form-control placeholder"/>
                                     <span class="form-control-icon"><i class="fa fa-envelope"></i></span>
                                 </div>
@@ -144,24 +237,24 @@ class WPBakeryShortCode_hq_rentit_contact_form extends WPBakeryShortCode {
                     <?php if ( $atts['show_subject'] == true ): ?>
                         <div class="outer required">
                             <div class="form-group af-inner has-icon">
-                                <label class="sr-only" for="subject"><?php esc_html_e( 'Subject', 'rentit' ); ?></label>
+                                <label class="sr-only" for="subject"><?php $subject_label; ?></label>
                                 <input
-                                    type="text" name="subject" id="subject"
-                                    placeholder="<?php esc_html_e( 'Subject', 'rentit' ); ?>" value="" size="30"
+                                    type="text" name="<?php echo $subject_id; ?>" id="subject"
+                                    placeholder="<?php echo $subject_placeholder; ?>" value="" size="30"
                                     data-toggle="tooltip"
-                                    title="<?php esc_html_e( 'Subject is required', 'rentit' ); ?>"
+                                    title="<?php echo $subject_placeholder; ?>"
                                     class="form-control placeholder"/>
                                 <span class="form-control-icon"><i class="fa fa-bars"></i></span>
                             </div>
                         </div>
                     <?php endif; ?>
                     <div class="form-group af-inner has-icon">
-                        <label class="sr-only" for="input-message"><?php esc_html_e( 'Message', 'rentit' ); ?></label>
+                        <label class="sr-only" for="input-message"><?php echo $message_label; ?></label>
                         <textarea
-                            name="message" id="input-message"
-                            placeholder="<?php esc_html_e( 'Message', 'rentit' ); ?>" rows="4" cols="50"
+                            name="<?php echo $message_id; ?>" id="input-message"
+                            placeholder="<?php echo $message_placeholder; ?>" rows="4" cols="50"
                             data-toggle="tooltip"
-                            title="<?php esc_html_e( 'Message is required', 'rentit' ); ?>"
+                            title="<?php echo $message_placeholder; ?>"
                             class="form-control placeholder"></textarea>
                         <span class="form-control-icon"><i class="fa fa-bars"></i></span>
                     </div>
@@ -169,9 +262,7 @@ class WPBakeryShortCode_hq_rentit_contact_form extends WPBakeryShortCode {
                     <div class="outer required">
 
                         <div class="form-group af-inner">
-                            <input type="submit" name="submit"
-                                   class="form-button form-button-submit btn btn-block btn-theme ripple-effect btn-theme-dark"
-                                   id="submit_btn" value="<?php esc_html_e( 'Send message', 'rentit' ); ?>"/>
+                            <input type="submit" name="submit" class="form-button form-button-submit btn btn-block btn-theme ripple-effect btn-theme-dark" id="submit_btn" value="<?php echo $button_text; ?>" style="max-width: 600px !important;"/>
                         </div>
                     </div>
 

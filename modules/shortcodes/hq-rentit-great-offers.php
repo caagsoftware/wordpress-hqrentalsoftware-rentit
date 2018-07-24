@@ -155,7 +155,7 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                                             <div class="buttons">
                                                                 <a class="btn btn-theme ripple-effect"
                                                                    href="<?php echo esc_url(get_the_permalink()) ?>">
-                                                                    <?php echo wp_kses_post(apply_filters('rentit_rentit_text', esc_html__('Reserve', 'rentit'))); ?>
+                                                                    <?php echo esc_html__('Reserve Now', 'rentit'); ?>
                                                                 </a>
                                                             </div>
                                                             <table class="table">
