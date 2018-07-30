@@ -32,6 +32,18 @@ vc_map(array(
             'value' => '',
             'description' => esc_html__('Enter the category Ids', 'motors')
         ),
+        array(
+            'type' => 'textfield',
+            'param_name' => 'button_text',
+            'description' => esc_html__('Reserve Button Text', 'motors'),
+            'value' => '',
+        ),
+        array(
+            'type' => 'textfield',
+            'param_name' => 'day_tag',
+            'description' => esc_html__('Enter Day Tag', 'motors'),
+            'value' => '',
+        ),
     )
 ));
 class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
@@ -42,7 +54,9 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
         extract(shortcode_atts(array(
             'h_s' => esc_html__("What a Kind of Car You Want", "rentit"),
             'h' => esc_html__('Great Rental Offers for You', "rentit"),
-            'id' => ''
+            'id' => '',
+            'button_text'   =>  '',
+            'day_tag'       =>  ''
         ), $atts));
         ob_start();
         ?>
@@ -150,12 +164,12 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                                                     $vehicle_class = caag_hq_get_vehicle_classes_for_display_by_caag_id( get_post_meta( get_the_ID(), CAAG_HQ_RENTAL_VEHICLE_CLASS_CAAG_ID_ON_WOOCOMMERCE_PRODUCT_META, true ) );
                                                                     $features = caag_hq_get_features_for_display_by_caag_id( $vehicle_class->id );
                                                                 ?>
-                                                                <?php echo get_woocommerce_currency_symbol() ; ?> <?php echo $woo_product->get_price() . ' / per day';  ?>
+                                                                <?php echo get_woocommerce_currency_symbol() ; ?> <?php echo $woo_product->get_price() . ' / ' . $day_tag;  ?>
                                                             </div>
                                                             <div class="buttons">
                                                                 <a class="btn btn-theme ripple-effect"
                                                                    href="<?php echo esc_url(get_the_permalink()) ?>">
-                                                                    <?php echo esc_html__('Reserve Now', 'rentit'); ?>
+                                                                    <?php echo esc_html__($button_text, 'rentit'); ?>
                                                                 </a>
                                                             </div>
                                                             <table class="table">

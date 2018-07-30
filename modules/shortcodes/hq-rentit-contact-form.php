@@ -44,16 +44,13 @@ vc_map( array(
                 array(
                     'type'       => 'iconpicker',
                     'heading'    => esc_html__( 'Icon', 'rentit' ),
-                    'param_name' => 'icon',
-
-                    'description' => esc_html__( 'Select icon from library.', 'rentit' ),
+                    'param_name' => 'icon'
                 ),
                 array(
                     'type'        => 'textfield',
                     'holder'      => 'div',
                     'heading'     => esc_html__( 'Text', 'rentit' ),
                     'param_name'  => 'title',
-                    'description' => esc_html__( 'Label  E.g. Adress: 1600 Pennsylvania Ave NW, Washington, D.C. ', 'rentit' )
                 ),
 
             ),
