@@ -2,7 +2,7 @@
 /**
  * Plugin Name: HQ RentIt Theme Integration
  * Description: HQ Rental Software Theme Integration
- * Version: 0.0.0.1
+ * Version: 0.0.7
  * Author: HQ Rental Software
  * Author URI: http://hqrentalsoftware.com
  * Text Domain: hqrentit
