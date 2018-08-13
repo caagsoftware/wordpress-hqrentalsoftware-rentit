@@ -13,10 +13,11 @@
  */
 
 /*
- *  ShortcodePlugin
+ *  Shortcode Plugin
  */
 require_once(ABSPATH . 'wp-content/plugins/js_composer/js_composer.php');
-
+define('HQ_RENTIT_BASE_FILE', __FILE__);
+define('HQ_RENTIT_BASE_DIR', dirname(HQ_RENTIT_BASE_FILE));
 
 /*
  * Others Files

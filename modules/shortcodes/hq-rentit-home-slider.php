@@ -220,7 +220,12 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
                     <iframe  src="<?php echo esc_url( get_youtube_embed_url( $video ) ) ?>" frameborder="0"></iframe>
                 </div>
             <?php endif; ?>
-            <div class="caption">
+            <style>
+                .hq-slider-caption{
+                    background:rgba(0, 0, 0, 0.5);
+                }
+            </style>
+            <div class="caption hq-slider-caption">
                 <div class="container">
                     <div class="div-table">
                         <div class="div-cell">

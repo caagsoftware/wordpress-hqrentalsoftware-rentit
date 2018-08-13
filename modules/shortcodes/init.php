@@ -7,3 +7,4 @@ require_once('hq-rentit-great-offers.php');
 require_once('hq-rentit-home-slider.php');
 require_once('hq-rentit-tabs.php');
 require_once('hq-rentit-contact-form.php');
+require_once('hq-renit-awesome-fleet.php');
