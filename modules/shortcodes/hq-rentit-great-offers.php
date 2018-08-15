@@ -66,10 +66,12 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                     <small><?php echo wp_kses_post($atts['h_s']); ?></small>
                     <span><?php echo wp_kses_post($atts['h']); ?></span>
                 </h2>
+                <!--
                 <div class="tabs wow fadeInUp" data-wow-offset="70" data-wow-delay="300ms">
                     <ul id="tabs" class="nav"><!--
-                        -->
+
                         <?php
+
                         $args = array(
                             'taxonomy' => 'product_cat',
                             'hide_empty' => 0,
@@ -90,10 +92,8 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                             <?php
                             $i++;
                         } ?>
-                        <!--
-                            -->
                     </ul>
-                </div>
+                </div> -->
                 <div class="tab-content wow fadeInUp" data-wow-offset="70" data-wow-delay="500ms">
                     <?php $i = 1;
                     //show tabs
@@ -177,7 +177,7 @@ class WPBakeryShortCode_hq_great_offers_slider extends WPBakeryShortCode
                                                                 <tr>
                                                                     <?php foreach ($features as $feature): ?>
                                                                         <td>
-                                                                            <i class="fa fa-<?php echo $feature->icon; ?>"></i>
+                                                                            <i class="<?php echo caag_hq_get_fontawesome_icon_tag($feature->icon); ?>"></i>
                                                                             <?php echo $feature->label; ?>
                                                                         </td>
                                                                     <?php endforeach; ?>
