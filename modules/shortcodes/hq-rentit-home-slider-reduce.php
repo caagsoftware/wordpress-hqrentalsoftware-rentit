@@ -178,6 +178,12 @@ vc_map(array(
             'param_name' => 'location_id',
             'value' => ''
         ),
+        array(
+            'type' => 'textfield',
+            'heading' => esc_html__('Minimum Rental Period', 'motors'),
+            'param_name' => 'minimum_rental',
+            'value' => ''
+        ),
     )
 ));
 class WPBakeryShortCode_hq_home_slider_reduce extends WPBakeryShortCode{
@@ -209,7 +215,8 @@ class WPBakeryShortCode_hq_home_slider_reduce extends WPBakeryShortCode{
             'email_label'               =>  '',
             'email_placeholder'         =>  '',
             'enable_passenger'          =>  false,
-            'location_id'               =>  ''
+            'location_id'               =>  '',
+            'minimum_rental'            =>  ''
         ), $atts));
         if ( empty( $img_src ) ) {
             $img_src = get_template_directory_uri() . '/img/preview/slider/slide-2.jpg';
@@ -218,6 +225,11 @@ class WPBakeryShortCode_hq_home_slider_reduce extends WPBakeryShortCode{
             $img = $img[0];
         }
         ob_start();
+        $minimum_rental = !empty($minimum_rental) ? (int)$minimum_rental : 0;
+        $share_data = array(
+                'hqMinimumPeriod'   =>  $minimum_rental
+        );
+        wp_localize_script('hq-rentit-app-js', 'hqHomeFormShareData', $share_data);
         ?>
         <!--Begin-->
         <div class="item slide1 ver1" style="background-image: url('<?php echo esc_url( $img ); ?>');">
