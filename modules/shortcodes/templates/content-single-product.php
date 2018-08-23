@@ -24,6 +24,7 @@ $woo_product = $_pf->get_product($post->ID);
 ?>
 <form action="/reservation/" class="cart" method="post" enctype='multipart/form-data'>
 <<<<<<< Updated upstream:modules/shortcodes/templates/content-single-product.php
+<<<<<<< Updated upstream:modules/shortcodes/templates/content-single-product.php
     <?php elseif (get_locale() == 'de_DE'): ?>
     <form action="/de/reservation/" class="cart" method="post" enctype='multipart/form-data'>
         <?php endif; ?>
@@ -48,10 +49,15 @@ $woo_product = $_pf->get_product($post->ID);
              */
             do_action('woocommerce_before_single_product');
 =======
+=======
+>>>>>>> Stashed changes:modules/templates/content-single-product.php
 
     <div id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
         <?php
         if (!$product->is_in_stock()) {
+<<<<<<< Updated upstream:modules/shortcodes/templates/content-single-product.php
+>>>>>>> Stashed changes:modules/templates/content-single-product.php
+=======
 >>>>>>> Stashed changes:modules/templates/content-single-product.php
             ?>
             <div class="woocommerce-error">
