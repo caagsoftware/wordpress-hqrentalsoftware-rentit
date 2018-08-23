@@ -172,6 +172,12 @@ vc_map(array(
             'param_name' => 'email_placeholder',
             'value' => ''
         ),
+        array(
+            'type' => 'checkbox',
+            'heading' => esc_html__('Hour Format (24h)', 'motors'),
+            'param_name' => 'hour_format',
+            'value' => '1'
+        ),
     )
 ));
 class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
@@ -202,7 +208,8 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
             'passenger_placeholder'     =>  '',
             'email_label'               =>  '',
             'email_placeholder'         =>  '',
-            'enable_passenger'          =>  false
+            'enable_passenger'          =>  false,
+            'hour_format'               =>  ''
         ), $atts));
         if ( empty( $img_src ) ) {
             $img_src = get_template_directory_uri() . '/img/preview/slider/slide-2.jpg';
@@ -267,7 +274,11 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
                                                                     <?php esc_html_e( $pick_up_time_label, 'rentit' ); ?>
                                                                 </label>
                                                                 <select name="pick_up_time" class="hq-locations-selects">
-                                                                    <?php echo caag_hq_rental_get_times('07:00', '20:00'); ?>
+                                                                    <?php if( $hour_format ): ?>
+                                                                        <?php echo caag_hq_rental_get_times_military('07:00', '20:00'); ?>
+                                                                    <?php else: ?>
+                                                                        <?php echo caag_hq_rental_get_times('07:00', '20:00'); ?>
+                                                                    <?php endif; ?>
                                                                 </select>
                                                                 <span class="form-control-icon"><i class="fa fa-clock-o" style="margin-right:8px;"></i></span>
                                                             </div>
@@ -305,7 +316,11 @@ class WPBakeryShortCode_hq_home_slider extends WPBakeryShortCode{
                                                                     <?php esc_html_e( $return_time_label, 'rentit' ); ?>
                                                                 </label>
                                                                 <select name="return_time" class="hq-locations-selects">
-                                                                    <?php echo caag_hq_rental_get_times('07:00', '20:00'); ?>
+                                                                    <?php if( $hour_format ): ?>
+                                                                        <?php echo caag_hq_rental_get_times_military('07:00', '20:00'); ?>
+                                                                    <?php else: ?>
+                                                                        <?php echo caag_hq_rental_get_times('07:00', '20:00'); ?>
+                                                                    <?php endif; ?>
                                                                 </select>
                                                                 <span class="form-control-icon"><i class="fa fa-clock-o" style="margin-right:8px;"></i></span>
                                                             </div>
